@@ -61,7 +61,7 @@ void vector_t::push_back(int value)
 	}
 	else { vector_t  vr = new vector_t [capacity];
 		 for (int i = 0; i < size; i++)
-		 {vr[i] = els[i];}
+		 vr[i] = els[i];
 		vr[size + 1] = value;
 }
 
