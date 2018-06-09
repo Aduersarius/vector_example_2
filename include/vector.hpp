@@ -12,8 +12,8 @@ public:
 	vector_t & operator =(vector_t const & other);
 	~vector_t();
 
-	std::size_t size() const;
-	std::size_t capacity() const;
+	std::size_t size_() const;
+	std::size_t capacity_() const;
 
 	void push_back(int value);
 	void pop_back();
