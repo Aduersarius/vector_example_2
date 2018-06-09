@@ -11,8 +11,8 @@ vector_t::vector_t()
 
 vector_t::vector_t(vector_t const & other)
 {
-	capacity = other.capacity();
-	size = other.size();
+	capacity = other.capacity_();
+	size = other.size_();
         els = new int [capacity];
 	for (int i = 0; i < size; i++)
 	els[i] = other.els[i];
@@ -20,7 +20,7 @@ vector_t::vector_t(vector_t const & other)
 
 vector_t & vector_t::operator =(vector_t const & other)
 {
-	els = new vector_t [other.capacity];
+	els = new int [other.capacity];
         for (int i = 0; i < other.size; i++)
 		els[i] = other.els[i];
 	size = other.size;
@@ -31,7 +31,7 @@ vector_t & vector_t::operator =(vector_t const & other)
 
 bool vector_t::operator ==(vector_t const & other) const
 {
-	els = new vector_t [other.capacity];
+	els = new int [other.capacity];
 	for (int i = 0; i < other.capacity; i++)
 		if (els[i] != other.els[i]) return false;
 		return true;
@@ -39,15 +39,15 @@ bool vector_t::operator ==(vector_t const & other) const
 
 vector_t::~vector_t()
 {
-	return delete []vr;
+	return delete []els;
 }
 
-std::size_t vector_t::size() const
+std::size_t vector_t::size_() const
 {
     return size;
 }
 
-std::size_t vector_t::capacity() const
+std::size_t vector_t::capacity_() const
 {
     return capacity;
 }
@@ -55,12 +55,12 @@ std::size_t vector_t::capacity() const
 void vector_t::push_back(int value)
 {
 	if (size == capacity){
-		els = new vector_t[2*capacity];
+		els = new int[2*capacity];
 		 for (int i = 0; i < size; i++)
 		 {els[i] = els[i];}
 		els[size + 1] = value;
 	}
-	else { els = new vector_t [capacity];
+	else { els = new int [capacity];
 		 for (int i = 0; i < size; i++)
 		 els[i] = els[i];
 		els[size + 1] = value;
@@ -83,7 +83,7 @@ void vector_t::pop_back()
 
 int & vector_t::operator [](std::size_t index)
 {
-	return elements_[0];
+	return elements[0];
 }
 
 int vector_t::operator [](std::size_t index) const
@@ -94,11 +94,11 @@ int vector_t::operator [](std::size_t index) const
 bool operator !=(vector_t const & lhs, vector_t const & rhs)
 {
 	if (lhs.capacity =< rhs.capacity){
-	for (int i = 0; i < lhs.capacity; i++){
+	for (int i = 0; i < lhs.capacity; i++)
 		if (rhs.els[i] != lhs.els[i]) return true;
-		return false;}
+		return false;
 	}
-	else for (int i = 0; i < rhs.capacity; i++){
+	else {for (int i = 0; i < rhs.capacity; i++)
 		if (rhs.els[i] != lhs.els[i]) return true;
 		return false;}
 		
