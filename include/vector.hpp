@@ -3,9 +3,9 @@
 class vector_t
 {
 private:
-	int * elements_;
-	std::size_t size_;
-	std::size_t capacity_;
+	int * els;
+	std::size_t size;
+	std::size_t capacity;
 public:
 	vector_t();
 	vector_t(vector_t const & other);
