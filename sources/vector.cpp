@@ -15,7 +15,7 @@ vector_t::vector_t(vector_t const & other)
 	size = other.size();
         els = new int [capacity];
 	for (int i = 0; i < size; i++)
-	{els[i] = other.els[i];
+	els[i] = other.els[i];
 }
 
 vector_t & vector_t::operator =(vector_t const & other)
@@ -32,7 +32,7 @@ vector_t & vector_t::operator =(vector_t const & other)
 bool vector_t::operator ==(vector_t const & other) const
 {
 	els = new vector_t [other.capacity];
-	for (int i = 0; i < other.capacity; i++){
+	for (int i = 0; i < other.capacity; i++)
 		if (els[i] != other.els[i]) return false;
 		return true;
 }
