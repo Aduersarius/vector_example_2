@@ -4,21 +4,21 @@
 
 vector_t::vector_t()
 {
-        int size = 0;
-	int capacity = 0;
-	int els= NULL;
+        size = 0;
+	capacity = 0;
+	els= nullptr;
 }
 
 vector_t::vector_t(vector_t const & other)
 {
-	 capacity = other.capacity;
-	size = other size;
-         vector_t  vr = new vector_t [capacity];
+	capacity = other.capacity();
+	size = other size();
+        vr = new vector_t [capacity];
 	for (int i = 0; i < size; i++)
 	{vr[i] = other.els[i];
 }
 
-vector_t & vector_t::operator =(vector_t const & other)
+vector_t & vector_t::operator =(vector_t const & other) const
 {
 	vector_t  vr = new vector_t [other.capacity];
         for (int i = 0; i < other.size; i++)
