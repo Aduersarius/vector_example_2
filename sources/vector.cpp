@@ -12,17 +12,17 @@ vector_t::vector_t()
 vector_t::vector_t(vector_t const & other)
 {
 	capacity = other.capacity();
-	size = other size();
-        vr = new vector_t [capacity];
+	size = other.size();
+        els = new int [capacity];
 	for (int i = 0; i < size; i++)
-	{vr[i] = other.els[i];
+	{els[i] = other.els[i];
 }
 
-vector_t & vector_t::operator =(vector_t const & other) const
+vector_t & vector_t::operator =(vector_t const & other)
 {
-	vector_t  vr = new vector_t [other.capacity];
+	els = new vector_t [other.capacity];
         for (int i = 0; i < other.size; i++)
-		vr[i] = other.els[i];
+		els[i] = other.els[i];
 	size = other.size;
 	capacity = other.capacity;
 	
@@ -31,9 +31,9 @@ vector_t & vector_t::operator =(vector_t const & other) const
 
 bool vector_t::operator ==(vector_t const & other) const
 {
-	vector_t  vr = new vector_t [other.capacity];
+	els = new vector_t [other.capacity];
 	for (int i = 0; i < other.capacity; i++){
-		if (vr[i] != other.els[i]) return false;
+		if (els[i] != other.els[i]) return false;
 		return true;
 }
 
@@ -55,27 +55,27 @@ std::size_t vector_t::capacity() const
 void vector_t::push_back(int value)
 {
 	if (size == capacity){
-		vector_t  vr = new vector_t[2*capacity];
+		els = new vector_t[2*capacity];
 		 for (int i = 0; i < size; i++)
-		 {vr[i] = els[i];}
-		vr[size + 1] = value;
+		 {els[i] = els[i];}
+		els[size + 1] = value;
 	}
-	else { vector_t  vr = new vector_t [capacity];
+	else { els = new vector_t [capacity];
 		 for (int i = 0; i < size; i++)
-		 vr[i] = els[i];
-		vr[size + 1] = value;
+		 els[i] = els[i];
+		els[size + 1] = value;
 }
 
 void vector_t::pop_back()
 {
 	if (size =< capacity/2){
-		int vr = new int[capacity/2];
+		els = new int[capacity/2];
 		for (int i = 0; i < size; i++)
-		 {vr[i] = els[i];}
+		 {els[i] = els[i];}
 		size -= 1;
 	}
 	else {
-		int vr = new int[capacity];
+		els = new int[capacity];
 		size -= 1;
 	}
 		
