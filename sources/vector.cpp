@@ -1,11 +1,12 @@
-#include <algorithm>
 #include <cassert>
 
 #include "vector.hpp"
 
-vector_t::vector_t(int size {0}, int capacity {0}, els{NULL})
+vector_t::vector_t()
 {
-   
+        int size = 0;
+	int capacity = 0;
+	int els= NULL;
 }
 
 vector_t::vector_t(vector_t const & other)
