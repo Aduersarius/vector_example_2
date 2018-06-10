@@ -70,8 +70,8 @@ TEST_CASE("pushing elements")
 	REQUIRE( vector.capacity_() == 2 );
 
 	vector.push_back(3);
-	REQUIRE( vector.size() == 3 );
-	REQUIRE( vector.capacity() == 4 );
+	REQUIRE( vector.size_() == 3 );
+	REQUIRE( vector.capacity_() == 4 );
 
 	vector.push_back(4);
 	REQUIRE( vector.size_() == 4 );
