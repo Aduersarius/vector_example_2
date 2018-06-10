@@ -82,8 +82,8 @@ void vector_t::push_back(int value)
 void vector_t::pop_back()
 {       if (size != 0) {
 	size--;
-	if (size <= capacity/2){
-		capacity /= 2;
+	if (size <= (capacity/2)){
+		capacity = capacity / 2;
 		int* tmp = new int[capacity];
 		for (int i = 0; i < size; i++)
 	        tmp[i] = els[i];
