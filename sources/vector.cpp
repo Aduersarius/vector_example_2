@@ -54,52 +54,61 @@ std::size_t vector_t::capacity_() const
 
 void vector_t::push_back(int value)
 {
-	if (size == capacity){
-		els = new int[2*capacity];
-		 for (int i = 0; i < size; i++)
-		 {els[i] = els[i];}
-		els[size + 1] = value;
-	}
-	else { els = new int [capacity];
-		 for (int i = 0; i < size; i++)
-		 els[i] = els[i];
-		els[size + 1] = value;
-}
-
-void vector_t::pop_back()
-{
-	if (size =< capacity/2){
-		els = new int[capacity/2];
-		for (int i = 0; i < size; i++)
-		 {els[i] = els[i];}
-		size -= 1;
+	if (!els) {
+		size = 1;
+		capacity = 1;
+		els = new int [capacity];
+		els[0] = value;
 	}
 	else {
-		els = new int[capacity];
-		size -= 1;
+	if (size == capacity){
+		capacity *= 2;
+		int* tmp = new int[capacity];
+		for (int i = 0; i < size; i++)
+	        tmp[i] = els[i];
+		delete [] els;
+		int* els = new int[capacity];
+		for (int i = 0; i < size; i++)
+	        els[i] = tmp[i];
+		delete [] tmp;
+		els[size] = value;
+		size++;
 	}
-		
+	else {  els[size] = value;
+	        size++;
+	     }
+        }
+}
+void vector_t::pop_back()
+{       if (size != 0) {
+	size--;
+	if (size =< capacity/2){
+		capacity /= 2;
+		int* tmp = new int[capacity];
+		for (int i = 0; i < size; i++)
+	        tmp[i] = els[i];
+		delete [] els;
+		int* els = new int[capacity];
+		for (int i = 0; i < size; i++)
+	        els[i] = tmp[i];
+		delete [] tmp;
+	}
+}	
 }
 
 int & vector_t::operator [](std::size_t index)
 {
-	return elements[0];
+	return els[index];
 }
 
 int vector_t::operator [](std::size_t index) const
 {
-	return 0;
+	return els[index];
 }
 
 bool operator !=(vector_t const & lhs, vector_t const & rhs)
 {
-	if (lhs.capacity =< rhs.capacity){
-	for (int i = 0; i < lhs.capacity; i++)
-		if (rhs.els[i] != lhs.els[i]) return true;
-		return false;
-	}
-	else {for (int i = 0; i < rhs.capacity; i++)
-		if (rhs.els[i] != lhs.els[i]) return true;
-		return false;}
+	if (lhs == rhs) return false;
+	else return true;
 		
 }
