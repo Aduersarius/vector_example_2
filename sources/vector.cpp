@@ -11,16 +11,15 @@ vector_t::vector_t()
 
 vector_t::vector_t(vector_t const & other)
 {
-	capacity = other.capacity_();
-	size = other.size_();
-        els = new int [capacity];
-	for (int i = 0; i < size; i++)
+	capacity = other.capacity;
+	size = other.size;
+        els = new int [other.capacity];
+	for (int i = 0; i < capacity; i++)
 	els[i] = other.els[i];
 }
 
 vector_t & vector_t::operator =(vector_t const & other)
 {
-	els = new int [other.capacity];
         for (int i = 0; i < other.size; i++)
 		els[i] = other.els[i];
 	size = other.size;
@@ -30,11 +29,12 @@ vector_t & vector_t::operator =(vector_t const & other)
 }
 
 bool vector_t::operator ==(vector_t const & other) const
-{
-	els = new int [other.capacity_()];
-	for (int i = 0; i < other.capacity_(); i++)
+{       if (capacity == other.capacity){
+	for (int i = 0; i < capacity; i++)
 		if (els[i] != other.els[i]) return false;
 		return true;
+        }
+        return false;
 }
 
 vector_t::~vector_t()
