@@ -31,15 +31,15 @@ vector_t & vector_t::operator =(vector_t const & other)
 
 bool vector_t::operator ==(vector_t const & other) const
 {
-	els = new int [other.capacity];
-	for (int i = 0; i < other.capacity; i++)
+	els = new int [other.capacity_()];
+	for (int i = 0; i < other.capacity_(); i++)
 		if (els[i] != other.els[i]) return false;
 		return true;
 }
 
 vector_t::~vector_t()
 {
-	return delete []els;
+       delete []els;
 }
 
 std::size_t vector_t::size_() const
