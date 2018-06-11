@@ -68,10 +68,10 @@ void vector_t::push_back(int value)
 	        tmp[i] = els[i];
 		delete [] els;
 		int* els = new int[capacity];
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < size-1; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
-		els[size] = value;
+		els[size-1] = value;
 		size++;
 	}
 	else {  els[size] = value;
@@ -85,11 +85,11 @@ void vector_t::pop_back()
 	if (size <= (capacity/2)){
 		capacity = capacity / 2;
 		int* tmp = new int[capacity];
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < size-1; i++)
 	        tmp[i] = els[i];
 		delete [] els;
 		int* els = new int[capacity];
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < size-1; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
 	}
