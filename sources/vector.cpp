@@ -89,11 +89,11 @@ void vector_t::pop_back()
 	if (size <= (capacity/4)){
 		capacity = capacity / 2;
 		int* tmp = new int[capacity];
-		for (int i = 0; i < size-1; i++)
+		for (int i = 0; i < size; i++)
 	        tmp[i] = els[i];
 		delete [] els;
 		els = new int[capacity];
-		for (int i = 0; i < size-1; i++)
+		for (int i = 0; i < size; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
 	}
