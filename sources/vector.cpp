@@ -20,17 +20,20 @@ vector_t::vector_t(vector_t const & other)
 
 vector_t & vector_t::operator =(vector_t const & other)
 {
+	if (this != &other) {
+		delete [] els;
+		els = new int [other.capacity_()];
         for (int i = 0; i < other.size_(); i++)
 		els[i] = other.els[i];
 	size = other.size_();
 	capacity = other.capacity_();
-	
+	}
 	return *this;
 }
 
 bool vector_t::operator ==(vector_t const & other) const
-{       if (capacity == other.capacity_()){
-	for (int i = 0; i < capacity; i++)
+{       if (size == other.size_()){
+	for (int i = 0; i < size; i++)
 		if (els[i] != other.els[i]) return false;
 		return true;
         }
