@@ -65,23 +65,24 @@ void vector_t::push_back(int value)
 	}
 	else {
 	if (size == capacity){
+		size++;
 		capacity *= 2;
 		int* tmp = new int[capacity];
 		for (int i = 0; i < size; i++)
 	        tmp[i] = els[i];
 		delete [] els;
-		int* els = new int[capacity];
+		els = new int[capacity];
 		for (int i = 0; i < size-1; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
 		els[size-1] = value;
-		size++;
 	}
 	else {  els[size] = value;
 	        size++;
 	     }
         }
 }
+
 void vector_t::pop_back()
 {       if (size != 0) {
 	size--;
@@ -91,7 +92,7 @@ void vector_t::pop_back()
 		for (int i = 0; i < size-1; i++)
 	        tmp[i] = els[i];
 		delete [] els;
-		int* els = new int[capacity];
+		els = new int[capacity];
 		for (int i = 0; i < size-1; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
