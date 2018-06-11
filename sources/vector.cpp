@@ -22,8 +22,8 @@ vector_t & vector_t::operator =(vector_t const & other)
 {
         for (int i = 0; i < other.size_(); i++)
 		els[i] = other.els[i];
-	size = other.size;
-	capacity = other.capacity;
+	size = other.size_();
+	capacity = other.capacity_();
 	
 	return *this;
 }
