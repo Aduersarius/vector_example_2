@@ -18,8 +18,8 @@ public:
 	void push_back(int value);
 	void pop_back();
 
-	int & operator [](std::size_t index);
-	int operator [](std::size_t index) const;
+	T & operator [](std::size_t index);
+	T operator [](std::size_t index) const;
 
 	bool operator ==(vector_t const & other) const;
 };
