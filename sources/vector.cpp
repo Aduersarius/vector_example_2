@@ -2,28 +2,40 @@
 
 #include "vector.hpp"
 
-vector_t::vector_t()
+template <typename T>
+vector_t<T>::vector_t()
 {
         size = 0;
 	capacity = 0;
 	els= nullptr;
 }
 
-vector_t::vector_t(vector_t const & other)
+template <typename T>
+vector_t<T>::vector_t(vector_t const & other)
 {
 	capacity = other.capacity_();
 	size = other.size_();
-        els = new int [other.capacity_()];
-	for (int i = 0; i < capacity; i++)
+        els = new T [other.capacity_()];
+	for (std::size_t i = 0; i < capacity; i++)
 	els[i] = other.els[i];
 }
 
-vector_t & vector_t::operator =(vector_t const & other)
+template <typename T>
+T & vector_t<T>::at(std::size_t index) const
+{
+    if(index >= capacity_){
+        throw "Выход за пределы массива!"; 
+    }
+    return elements_[index];
+}
+
+template <typename T>
+vector_t<T> & vector_t<T>::operator =(vector_t const & other)
 {
 	if (this != &other) {
 		delete [] els;
-		els = new int [other.capacity_()];
-        for (int i = 0; i < other.size_(); i++)
+		els = new T [other.capacity_()];
+        for (std::size_t i = 0; i < other.size_(); i++)
 		els[i] = other.els[i];
 	size = other.size_();
 	capacity = other.capacity_();
@@ -31,48 +43,53 @@ vector_t & vector_t::operator =(vector_t const & other)
 	return *this;
 }
 
-bool vector_t::operator ==(vector_t const & other) const
+template <typename T>
+bool vector_t<T>::operator ==(vector_t const & other) const
 {       if (size == other.size_()){
-	for (int i = 0; i < size; i++)
+	for (std::size_t i = 0; i < size; i++)
 		if (els[i] != other.els[i]) return false;
 		return true;
         }
         return false;
 }
 
-vector_t::~vector_t()
+template <typename T>
+vector_t<T>::~vector_t()
 {
        delete []els;
 }
 
-std::size_t vector_t::size_() const
+template <typename T>
+std::size_t vector_t<T>::size_() const
 {
     return size;
 }
 
-std::size_t vector_t::capacity_() const
+template <typename T>
+std::size_t vector_t<T>::capacity_() const
 {
     return capacity;
 }
 
-void vector_t::push_back(int value)
+template <typename T>
+void vector_t<T>::push_back(T value)
 {
 	if (!els) {
 		size = 1;
 		capacity = 1;
-		els = new int [capacity];
+		els = new T [capacity];
 		els[0] = value;
 	}
 	else {
 	if (size == capacity){
 		size++;
 		capacity *= 2;
-		int* tmp = new int[capacity];
-		for (int i = 0; i < size; i++)
+     		T* tmp = new T[capacity];
+		for (std::size_t i = 0; i < size; i++)
 	        tmp[i] = els[i];
 		delete [] els;
-		els = new int[capacity];
-		for (int i = 0; i < size-1; i++)
+		els = new T[capacity];
+		for (std::size_t i = 0; i < size-1; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
 		els[size-1] = value;
@@ -83,34 +100,38 @@ void vector_t::push_back(int value)
         }
 }
 
-void vector_t::pop_back()
+template <typename T>
+void vector_t<T>::pop_back()
 {       if (size != 0) {
 	size--;
 	if (size <= (capacity/4)){
 		capacity = capacity / 2;
-		int* tmp = new int[capacity];
-		for (int i = 0; i < size; i++)
+		T* tmp = new T[capacity];
+		for (std::size_t i = 0; i < size; i++)
 	        tmp[i] = els[i];
 		delete [] els;
-		els = new int[capacity];
-		for (int i = 0; i < size; i++)
+		els = new T[capacity];
+		for (std::size_t i = 0; i < size; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
 	}
 }	
 }
 
-int & vector_t::operator [](std::size_t index)
+template <typename T>
+T & vector_t<T>::operator [](std::size_t index)
 {
 	return els[index];
 }
 
-int vector_t::operator [](std::size_t index) const
+template <typename T>
+T vector_t<T>::operator [](std::size_t index) const
 {
 	return els[index];
 }
 
-bool operator !=(vector_t const & lhs, vector_t const & rhs)
+template <typename T>
+bool operator !=(vector_t<T> const & lhs, vector_t<T> const & rhs)
 {
 	if (lhs == rhs) return false;
 	else return true;
