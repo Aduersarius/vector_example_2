@@ -14,6 +14,8 @@ public:
 
 	std::size_t size_() const;
 	std::size_t capacity_() const;
+	
+	T & at(std::size_t index) const;
 
 	void push_back(int value);
 	void pop_back();
