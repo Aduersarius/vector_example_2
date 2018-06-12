@@ -1,9 +1,9 @@
 #include <iostream>
-
+template <class T>
 class vector_t
 {
 private:
-	int * els;
+	T * els;
 	std::size_t size;
 	std::size_t capacity;
 public:
