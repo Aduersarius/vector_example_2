@@ -23,10 +23,10 @@ vector_t<T>::vector_t(vector_t const & other)
 template <typename T>
 T & vector_t<T>::at(std::size_t index) const
 {
-    if(index >= capacity_){
+    if(index >= capacity){
         throw "Выход за пределы массива!"; 
     }
-    return elements_[index];
+    return els[index];
 }
 
 template <typename T>
