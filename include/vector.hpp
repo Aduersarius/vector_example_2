@@ -26,4 +26,4 @@ public:
 	bool operator ==(vector_t const & other) const;
 };
 
-bool operator !=(vector_t const & lhs, vector_t const & rhs);
+bool operator !=(vector_t<T> const & lhs, vector_t<T> const & rhs);
