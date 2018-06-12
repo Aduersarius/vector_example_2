@@ -17,7 +17,7 @@ public:
 	
 	T & at(std::size_t index) const;
 
-	void push_back(int value);
+	void push_back(T value);
 	void pop_back();
 
 	T & operator [](std::size_t index);
@@ -25,5 +25,5 @@ public:
 
 	bool operator ==(vector_t const & other) const;
 };
-
+template <typename T>
 bool operator !=(vector_t<T> const & lhs, vector_t<T> const & rhs);
