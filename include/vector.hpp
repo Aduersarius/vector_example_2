@@ -1,5 +1,5 @@
 #include <iostream>
-template <class T>
+template <typename T>
 class vector_t
 {
 private:
