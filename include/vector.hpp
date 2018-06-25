@@ -15,7 +15,7 @@ public:
 	std::size_t size_() const;
 	std::size_t capacity_() const;
 	
-	T & at(std::size_t index) const;
+	T & at(std::size_t index);
 
 	void push_back(T value);
 	void pop_back();
@@ -72,7 +72,7 @@ T & vector_t<T>::at(std::size_t index) const
 
 {
 
-    if(index >= capacity){
+    if(index >= size){
 
         throw "Выход за пределы массива!"; 
 
